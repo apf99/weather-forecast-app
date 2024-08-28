@@ -10,7 +10,7 @@ def get_data(place, forecast_days=None):
         filtered_content = content['list']
         no_values = 8*forecast_days
         filtered_content = filtered_content[:no_values]
-    except:
+    except KeyError:
         filtered_content = None
     return filtered_content
 
