@@ -6,9 +6,12 @@ def get_data(place, forecast_days=None):
     url = f'http://api.openweathermap.org/data/2.5/forecast?q={place}&appid={API_KEY}'
     response = requests.get(url)
     content = response.json()
-    filtered_content = content['list']
-    no_values = 8*forecast_days
-    filtered_content = filtered_content[:no_values]
+    try:
+        filtered_content = content['list']
+        no_values = 8*forecast_days
+        filtered_content = filtered_content[:no_values]
+    except:
+        filtered_content = None
     return filtered_content
 
 
